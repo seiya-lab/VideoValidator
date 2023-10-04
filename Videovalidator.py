@@ -117,7 +117,10 @@ def remove_invalid_videos():
     
     
 if __name__ == "__main__":
+    print("Process is started!")
     user_dirs = [d for d in os.listdir(DATA_DIR) if os.path.isdir(os.path.join(DATA_DIR, d))]
+
+    print("user:", user_dirs)
     
     # user_dirsのディレクトリ(ファイルは含めない)を、processed_dataディレクトリにコピーする。
     for user_dir in user_dirs:
@@ -145,6 +148,7 @@ if __name__ == "__main__":
             date_video_paths[date].append(video_path)
         
     # 動画に対して容量が小さすぎる動画は、解析に有効でないと判断し、除外する。
+    print("removing videos")
     remove_invalid_videos()
     
     # 日付ごとの動画の総合計時間を計算し、出力する。
